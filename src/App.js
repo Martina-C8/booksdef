@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Container } from 'react-bootstrap';
+import MyNav from './Components/MyNav';
+import MyFooter from './Components/MyFooter';
+import AllTheBooks from './Components/AllTheBooks';
+import Welcome from './Components/Welcome';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './SingleBook.css';
+import romance from './Components/Data/romance.json';
 
-function App() {
+const App = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchChange = (searchTerm) => {
+    setSearchTerm(searchTerm);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MyNav searchTerm={searchTerm} onSearchChange={handleSearchChange} />
+      <Welcome />
+      <Container>
+        <AllTheBooks searchTerm={searchTerm} books={romance} />
+      </Container>
+      <MyFooter />
+    </>
   );
-}
+};
 
 export default App;
