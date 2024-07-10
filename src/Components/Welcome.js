@@ -4,9 +4,9 @@ import {Container } from 'react-bootstrap';
 const Welcome = () => {
   return (
       <Container>
-        <h1>Prova libreria</h1>
+        <h1>Benvenuti nella libreria!</h1>
         <p>
-            Trovi libri che cerchi non so che altro scrivere
+            <b>Cerca tra i libri disponibili</b>
         </p>
       </Container>
   );
