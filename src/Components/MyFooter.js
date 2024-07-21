@@ -1,16 +1,19 @@
+// src/components/MyFooter.js
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
 const MyFooter = () => {
   return (
-    <footer className="bg-dark text-white mt-5 p-4 text-center mia">
+    <footer className="footer-custom">
       <Container>
         <Row>
-          <Col>&copy; 2024 MyApp, Inc.</Col>
+          <Col className='text-center'>
+            <p>&copy; {new Date().getFullYear()} Bookstore di Martina - progettino epicode.</p>
+          </Col>
         </Row>
       </Container>
     </footer>
   );
-}
+};
 
 export default MyFooter;

@@ -1,28 +1,41 @@
-import React, { useState } from 'react';
-import { Card, Col } from 'react-bootstrap';
-import CommentArea from './CommentArea';
+// // src/components/SingleBook.js
+// import React from 'react';
+// import { Card, Button } from 'react-bootstrap';
+// import { Link } from 'react-router-dom';
+
+// const SingleBook = ({ book }) => {
+//   return (
+//     <Card className="card-custom">
+//       <Card.Img variant="top" src={book.img} />
+//       <Card.Body>
+//         <Card.Title>{book.title}</Card.Title>
+//         <Card.Text>{book.price}</Card.Text>
+//         <Link to={`/book/${book.asin}`}>
+//           <Button variant="primary">Details</Button>
+//         </Link>
+//       </Card.Body>
+//     </Card>
+//   );
+// };
+
+// export default SingleBook;
+// src/components/SingleBook.js
+import React from 'react';
+import { Card, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const SingleBook = ({ book }) => {
-  const [selected, setSelected] = useState(false);
-
-  const handleCoverClick = () => {
-    setSelected(!selected);
-  };
-
   return (
-    <Col sm={12} md={4} lg={3} className="mb-4">
-      <Card className={selected ? 'selected' : ''}>
-        <Card.Img 
-          variant="top" 
-          src={book.img} 
-          onClick={handleCoverClick} 
-        />
-        <Card.Body>
-          <Card.Title>{book.title}</Card.Title>
-          {selected && <CommentArea bookId={book.asin} />}
-        </Card.Body>
-      </Card>
-    </Col>
+    <Card className="card-custom" data-testid="single-book-card">
+      <Card.Img variant="top" src={book.img} />
+      <Card.Body>
+        <Card.Title>{book.title}</Card.Title>
+        <Card.Text>{book.price}</Card.Text>
+        <Link to={`/book/${book.asin}`}>
+          <Button variant="primary">Details</Button>
+        </Link>
+      </Card.Body>
+    </Card>
   );
 };
 

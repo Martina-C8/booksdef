@@ -1,15 +1,14 @@
+// src/components/Welcome.js
 import React from 'react';
-import {Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 const Welcome = () => {
   return (
-      <Container>
-        <h1>Benvenuti nella libreria!</h1>
-        <p>
-            <b>Cerca tra i libri disponibili</b>
-        </p>
-      </Container>
+    <Container className="mt-5">
+      <h1>Benvenuti sullo store!</h1>
+      <p>Cerca i libri che ti interessano e scopri la recensione a riguardo!</p>
+    </Container>
   );
-}
+};
 
 export default Welcome;

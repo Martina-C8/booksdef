@@ -1,42 +1,38 @@
+// src/components/MyNav.js
 import React from 'react';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
-import { useTheme } from './ThemeContext'; // Importa il custom hook per il tema
+import { LinkContainer } from 'react-router-bootstrap';
+import { useTheme } from './ThemeContext'; // Importa il contesto del tema
 
 const MyNav = ({ searchTerm, onSearchChange }) => {
   const { theme, toggleTheme } = useTheme();
 
-  const handleToggleTheme = () => {
-    toggleTheme(); // Cambia il tema da light a dark e viceversa
-  };
-
-  const handleSearchInputChange = (event) => {
-    onSearchChange(event.target.value); // Aggiorna il valore del searchTerm
-  };
-
   return (
-    <Navbar bg={theme === 'light' ? 'light' : 'dark'} variant={theme === 'light' ? 'light' : 'dark'} expand="lg">
-      <Navbar.Brand href="#home">Libreria</Navbar.Brand>
+    <Navbar className="navbar-custom" variant="dark" expand="lg">
+      <Navbar.Brand className='m-4' href="/">MyBookStore</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#about">About</Nav.Link>
-          <Nav.Link href="#browse">Browse</Nav.Link>
+          <LinkContainer to="/">
+            <Nav.Link>Home</Nav.Link>
+          </LinkContainer>
+          <LinkContainer to="/about">
+            <Nav.Link>About</Nav.Link>
+          </LinkContainer>
         </Nav>
-        <Form inline>
+        <Form inline className="ml-auto">
           <FormControl
             type="text"
             placeholder="Search"
             className="mr-sm-2"
             value={searchTerm}
-            onChange={handleSearchInputChange}
+            onChange={(e) => onSearchChange(e.target.value)}
           />
-          <Button variant="outline-light">Search</Button>
         </Form>
+        <Button variant="outline-light" onClick={toggleTheme}>
+          {theme === 'light' ? 'Dark' : 'Light'} Mode
+        </Button>
       </Navbar.Collapse>
-      <Button variant="outline-light" onClick={handleToggleTheme}>
-        Toggle Theme
-      </Button>
     </Navbar>
   );
 };
